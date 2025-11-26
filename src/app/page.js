@@ -1,3 +1,76 @@
+
+
+
+
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
+const features = [
+  {
+    title: "Smart Q&A",
+    description:
+      "Ask any complex question and receive concise, grounded answers powered by Gemini AI, directly referencing your documents.",
+    icon: (
+      <svg className="w-8 h-8 text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2m-9 0a2 2 0 002 2h2m-2-2h10m0 0l-3 3m3-3l3 3" />
+      </svg>
+    ),
+    bg: "from-purple-700/20 to-indigo-800/10 border-purple-600/30",
+  },
+  {
+    title: "Vector Search RAG",
+    description:
+      "Blazing-fast semantic search retrieves contextually relevant information — not just keywords.",
+    icon: (
+      <svg className="w-8 h-8 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    ),
+    bg: "from-indigo-700/20 to-purple-800/10 border-indigo-600/30",
+  },
+  {
+    title: "Secure & Private",
+    description:
+      "Your data stays yours. Strong JWT-based authentication and enterprise-grade security protocols.",
+    icon: (
+      <svg className="w-8 h-8 text-teal-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+      </svg>
+    ),
+    bg: "from-teal-700/20 to-gray-700/10 border-teal-600/30",
+  },
+];
+
+// const ChatBubble = ({ sender, text, citation }) => {
+//   const isUser = sender === "user";
+//   return (
+//     <div className={`flex ${isUser ? "justify-end" : "justify-start"} mb-3`}>
+//       <div
+//         className={`max-w-[80%] p-3 rounded-xl shadow-lg text-sm backdrop-blur-sm ${
+//           isUser
+//             ? "bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-purple-900/40"
+//             : "bg-gradient-to-br from-gray-700 to-gray-800 text-gray-100 shadow-black/40"
+//         }`}
+//         role="article"
+//         aria-label={isUser ? "user message" : "assistant message"}
+//       >
+//         <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose prose-invert m-0 break-words">
+//           {text}
+//         </ReactMarkdown>
+//         {citation && (
+//           <div className="mt-1 text-xs text-indigo-200">
+//             <span className="font-semibold">Source:</span> {citation}
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
 const ChatBubble = ({ sender, text, citation }) => {
   const isUser = sender === "user";
 
