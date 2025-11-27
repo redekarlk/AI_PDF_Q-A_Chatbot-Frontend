@@ -45,31 +45,7 @@ const features = [
   },
 ];
 
-// const ChatBubble = ({ sender, text, citation }) => {
-//   const isUser = sender === "user";
-//   return (
-//     <div className={`flex ${isUser ? "justify-end" : "justify-start"} mb-3`}>
-//       <div
-//         className={`max-w-[80%] p-3 rounded-xl shadow-lg text-sm backdrop-blur-sm ${
-//           isUser
-//             ? "bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-purple-900/40"
-//             : "bg-gradient-to-br from-gray-700 to-gray-800 text-gray-100 shadow-black/40"
-//         }`}
-//         role="article"
-//         aria-label={isUser ? "user message" : "assistant message"}
-//       >
-//         <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose prose-invert m-0 break-words">
-//           {text}
-//         </ReactMarkdown>
-//         {citation && (
-//           <div className="mt-1 text-xs text-indigo-200">
-//             <span className="font-semibold">Source:</span> {citation}
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
+
 
 const ChatBubble = ({ sender, text, citation }) => {
   const isUser = sender === "user";
