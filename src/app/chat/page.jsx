@@ -60,12 +60,10 @@ export default function HomePage() {
 
     const { documentId, title } = res.data;
 
-    // Set new chat data
-    setSelectedDocId(documentId);
-    setSelectedPdf(title || "New PDF");
-    setChatHistory([]);
-    setShowUploadCard(false);
     setRefreshSidebar((prev) => prev + 1);
+    
+    // Load chat history (handles both new and existing/duplicate PDFs)
+    await loadChatForPdf({ docId: documentId, title: title || "New PDF" });
 
     return res;
   };
