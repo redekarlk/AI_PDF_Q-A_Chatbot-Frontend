@@ -108,7 +108,7 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
 
             <button
               onClick={() => onSelectHistory({ newChat: true })}
-              className="bg-gray-500 text-white px-3 py-2 rounded-lg text-sm hover:bg-gray-700 transition"
+              className="bg-blue-950 ring-1 ring-violet-200 text-white px-3 py-2 rounded-sm text-sm hover:bg-gray-700 transition"
             >
               + New Chat
             </button>
@@ -132,15 +132,16 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
                         title: group.title,
                       })
                     }
-                    className={`cursor-pointer mb-1 text-sm font-semibold 
+                    className={`cursor-pointer mb-1 text-sm font-semibold truncate
                     hover:text-blue-300 transition
                     ${isSelectedPdf(group.title) ? "text-yellow-300" : "text-blue-400"}
                     ${open ? "opacity-100" : "opacity-0"}`}
+                    title={group.title}
                   >
                     {group.title}
                   </p>
 
-                  <div className="pl-3">
+                  {/* <div className="pl-3">
                     {group.items.slice(0, 3).map((item) => (
                       <p
                         key={item.id}
@@ -158,7 +159,7 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
                         {item.question?.length > 40 && "..."}
                       </p>
                     ))}
-                  </div>
+                  </div> */}
                 </div>
               ))
             )}
@@ -187,7 +188,7 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
                 onSelectHistory({ newChat: true });
                 setMobileOpen(false);
               }}
-              className="bg-gray-600 text-white px-4 py-2 rounded-lg text-sm"
+              className="bg-blue-950 ring-1 ring-violet-200 text-white px-4 py-2 rounded-lg text-sm"
             >
               + New Chat
             </button>
@@ -205,8 +206,9 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
                     });
                     setMobileOpen(false);
                   }}
-                  className={`cursor-pointer mb-1 text-sm font-semibold
+                  className={`cursor-pointer mb-1 text-sm font-semibold truncate
                   ${isSelectedPdf(group.title) ? "text-yellow-300" : "text-blue-400"}`}
+                  title={group.title}
                 >
                   {group.title}
                 </p>
