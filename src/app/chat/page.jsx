@@ -12,6 +12,7 @@ export default function HomePage() {
   const [chatHistory, setChatHistory] = useState([]);
   const [selectedDocId, setSelectedDocId] = useState(null);
   const [showUploadCard, setShowUploadCard] = useState(false);
+  const [refreshSidebar, setRefreshSidebar] = useState(0);
 
 
   // PDF Upload Card Component
@@ -64,6 +65,7 @@ export default function HomePage() {
     setSelectedPdf(title || "New PDF");
     setChatHistory([]);
     setShowUploadCard(false);
+    setRefreshSidebar((prev) => prev + 1);
 
     return res;
   };
@@ -100,6 +102,7 @@ export default function HomePage() {
       };
 
       setChatHistory((prev) => [...prev.slice(0, -1), aiMessage]);
+      setRefreshSidebar((prev) => prev + 1);
     } catch (err) {
       console.error(err);
       setChatHistory((prev) => [
@@ -117,7 +120,11 @@ export default function HomePage() {
 
   // UI Rendering
   return (
-    <SidebarLayout onSelectHistory={loadChatForPdf} selectedPdf={selectedPdf}>
+    <SidebarLayout
+      onSelectHistory={loadChatForPdf}
+      selectedPdf={selectedPdf}
+      refreshTrigger={refreshSidebar}
+    >
       <div className="flex flex-col h-full">
 
         {/* Header */}
