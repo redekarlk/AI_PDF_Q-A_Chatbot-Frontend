@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import api from "@/lib/axiosInstance";
 import { useAuth } from "@/context/AuthContext";
 
 export default function SidebarLayout({ children, onSelectHistory, selectedPdf, refreshTrigger }) {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   const [open, setOpen] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -89,10 +89,17 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
         className={`hidden sm:flex flex-col bg-gray-900 text-white h-full border-r border-gray-800 shadow-xl 
         transition-all duration-300 ${open ? "w-64" : "w-16"}`}
       >
-        <div className="p-4 border-b border-gray-700">
-          <h2 className={`${open ? "opacity-100" : "opacity-0"} transition-all text-sm`}>
+        <div className="p-4 border-b border-gray-700 flex items-center justify-between">
+          <h2 className={`${open ? "opacity-100" : "opacity-0"} transition-all text-sm truncate`}>
             {user?.name}
           </h2>
+          <button
+            onClick={logout}
+            className={`${open ? "opacity-100" : "opacity-0"} text-gray-400 hover:text-red-400 transition-all`}
+            title="Logout"
+          >
+            <LogOut size={18} />
+          </button>
         </div>
 
         <div className="p-4 flex-1 overflow-y-auto custom-scroll">
@@ -175,7 +182,14 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
         ${mobileOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="p-4 border-b border-gray-700 flex items-center justify-between">
-          <h2 className="text-sm">{user.name}</h2>
+          <h2 className="text-sm truncate max-w-[150px]">{user.name}</h2>
+          <button
+            onClick={logout}
+            className="mr-7 text-gray-400 hover:text-red-400 transition-all"
+            title="Logout"
+          >
+            <LogOut size={18} />
+          </button>
         </div>
 
         <div className="p-4 overflow-y-auto custom-scroll">
@@ -213,7 +227,7 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
                   {group.title}
                 </p>
 
-                <div className="pl-3">
+                {/* <div className="pl-3">
                   {group.items.slice(0, 3).map((item) => (
                     <p
                       key={item.id}
@@ -231,7 +245,7 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
                       {item.question?.length > 40 && "..."}
                     </p>
                   ))}
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
