@@ -20,12 +20,14 @@ export const AuthProvider = ({ children }) => {
   const login = (userData, token) => {
     localStorage.setItem("user", JSON.stringify(userData));
     localStorage.setItem("token", token);
+    document.cookie = `token=${token}; path=/; max-age=86400; SameSite=Strict`; // 1 day
     setUser(userData);
   };
 
   const logout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
+    document.cookie = "token=; path=/; max-age=0";
     setUser(null);
   };
 

@@ -1,13 +1,11 @@
 
-
-
-
 "use client";
 
 import React from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { useAuth } from "@/context/AuthContext";
 
 const features = [
   {
@@ -78,6 +76,8 @@ const ChatBubble = ({ sender, text, citation }) => {
 
 
 export default function Home() {
+  const { user, logout } = useAuth();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-950 to-black text-white font-sans">
       {/* Global keyframes + tiny helpers */}
@@ -91,14 +91,28 @@ export default function Home() {
           </Link>
 
           <div className="space-x-4 flex items-center">
-            <Link href="/auth" className="text-gray-300 hover:text-teal-300 transition" aria-label="Sign in">
-              Sign In
-            </Link>
-            <Link href="/upload" className="px-4 py-2 hidden sm:inline-block bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg font-semibold shadow-md shadow-purple-900/30 hover:opacity-90 transition" aria-label="Get started">
+            {user ? (
+              <button
+                onClick={logout}
+                className="text-gray-300 hover:text-teal-300 transition"
+                aria-label="Logout"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                href="/auth"
+                className="text-gray-300 hover:text-teal-300 transition"
+                aria-label="Sign in"
+              >
+                Sign In
+              </Link>
+            )}
+            <Link href="/chat" className="px-4 py-2 hidden sm:inline-block bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg font-semibold shadow-md shadow-purple-900/30 hover:opacity-90 transition" aria-label="Get started">
               Get Started
             </Link>
             {/* Mobile CTA */}
-            <Link href="/upload" className="px-3 py-2 sm:hidden bg-indigo-600 rounded-lg" aria-label="Get started mobile">
+            <Link href="/chat" className="px-3 py-2 sm:hidden bg-indigo-600 rounded-sm" aria-label="Get started mobile">
               Start
             </Link>
           </div>
@@ -107,8 +121,8 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative pt-24 pb-20 text-center px-4 sm:px-6 overflow-hidden">
-        <div className="absolute top-12 right-6 w-56 h-56 bg-purple-600/30 rounded-full blur-3xl animate-blob" aria-hidden />
-        <div className="absolute bottom-6 left-6 w-56 h-56 bg-teal-600/20 rounded-full blur-3xl animate-blob animation-delay-2000" aria-hidden />
+        <div className="absolute top-12 right-6 w-56 h-56 rounded-full blur-3xl animate-blob" aria-hidden />
+        <div className="absolute bottom-6 left-6 w-56 h-56 rounded-full blur-3xl animate-blob animation-delay-2000" aria-hidden />
 
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight mx-auto bg-gradient-to-r from-purple-300 via-indigo-300 to-teal-200 text-transparent bg-clip-text drop-shadow-xl">
@@ -121,7 +135,7 @@ export default function Home() {
           </p>
 
           <div className="mt-8 flex justify-center">
-            <Link href="/auth" className="inline-block px-8 py-3 rounded-full text-lg font-bold bg-gradient-to-r from-purple-600 to-indigo-600 shadow-xl shadow-purple-900/40 hover:scale-105 transition" aria-label="Upload PDF and start chatting">
+            <Link href="/auth" className="inline-block px-8 py-3 rounded-sm text-lg font-bold ring ring-red-500 hover:ring-0 hover:bg-gradient-to-r from-purple-600 to-indigo-600 shadow-xl shadow-purple-900/40 hover:scale-105 transition" aria-label="Upload PDF and start chatting">
               Upload PDF → Start Chatting
             </Link>
           </div>
@@ -130,14 +144,14 @@ export default function Home() {
 
       {/* DEMO PANEL */}
       <section className="py-12 px-4 sm:px-6 max-w-6xl mx-auto">
-        <div className="rounded-3xl border border-gray-700/50 bg-gray-900/50 backdrop-blur-xl p-6 sm:p-8 shadow-2xl shadow-black/60">
+        <div className="rounded-sm border border-gray-700/50 bg-gray-900/50 backdrop-blur-xl p-6 sm:p-8 shadow-2xl shadow-black/60">
           <h3 className="text-2xl sm:text-3xl font-bold text-center text-indigo-300 mb-8">Live Demo Preview</h3>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* PDF VIEWER MOCK */}
-            <div className="rounded-lg bg-gray-800 border border-gray-700 shadow-inner p-3 sm:p-4">
+            <div className="rounded-sm bg-gray-800 border border-gray-700 shadow-inner p-3 sm:p-4">
               <p className="text-xs text-teal-300 mb-2 font-mono">PDF_Technical_Report_Q2.pdf — Page 3</p>
-              <div className="p-3 bg-white text-gray-900 rounded-lg text-sm h-64 sm:h-[380px] overflow-y-auto shadow-md">
+              <div className="p-3 bg-white text-gray-900 rounded-sm text-sm h-64 sm:h-[380px] overflow-y-auto shadow-md">
                 <p className="font-bold mb-2 text-sm sm:text-base">Section 3.1: Fusion Reactor Status</p>
                 <p className="mb-3 text-sm sm:text-base">
                   Plasma stability reached <strong>4.5 seconds</strong> in test sequence T-48. Improvement resulted from the new
@@ -151,7 +165,7 @@ export default function Home() {
             </div>
 
             {/* CHAT MOCK */}
-            <div className="rounded-lg bg-gray-800 border border-gray-700 p-3 sm:p-4 shadow-inner flex flex-col">
+            <div className="rounded-sm bg-gray-800 border border-gray-700 p-3 sm:p-4 shadow-inner flex flex-col">
               <div className="flex-grow overflow-y-auto pr-2 space-y-2">
                 <ChatBubble sender="user" text="What is the next major project and timeline?" />
                 <ChatBubble sender="ai" text="The next major project is **Project Titan** with a projected timeline of **18 months**." citation="Page 3" />
@@ -175,8 +189,8 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {features.map((f, i) => (
-            <div key={i} className={`p-6 sm:p-8 rounded-2xl bg-gradient-to-br ${f.bg} border shadow-xl shadow-black/40 backdrop-blur-sm animate-card-hover transition`}>
-              <div className="w-14 h-14 rounded-full flex items-center justify-center bg-gray-900 ring-2 ring-teal-400 mx-auto mb-4 shadow-md">
+            <div key={i} className={`p-6 sm:p-8 rounded-sm bg-gradient-to-br ${f.bg} border shadow-xl shadow-black/40 backdrop-blur-sm animate-card-hover transition`}>
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-gray-900 ring ring-teal-400 mx-auto mb-4 shadow-md">
                 {f.icon}
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-center mb-2">{f.title}</h3>
