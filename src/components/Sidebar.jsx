@@ -141,7 +141,7 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
                   </p>
 
                   <div className="pl-3">
-                    {group.items.map((item) => (
+                    {group.items.slice(0, 3).map((item) => (
                       <p
                         key={item.id}
                         onClick={() =>
@@ -212,7 +212,7 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
                 </p>
 
                 <div className="pl-3">
-                  {group.items.map((item) => (
+                  {group.items.slice(0, 3).map((item) => (
                     <p
                       key={item.id}
                       onClick={() => {
