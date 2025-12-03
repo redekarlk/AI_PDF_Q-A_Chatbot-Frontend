@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import api from "@/lib/axiosInstance";
 import { useAuth } from "@/context/AuthContext";
 
-export default function SidebarLayout({ children, onSelectHistory, selectedPdf }) {
+export default function SidebarLayout({ children, onSelectHistory, selectedPdf, refreshTrigger }) {
   const { user } = useAuth();
 
   const [open, setOpen] = useState(true);
@@ -15,8 +15,8 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf }
   const [error, setError] = useState(null);
 
   // Load History Hook
-  const loadHistory = useCallback(async () => {
-    setLoading(true);
+  const loadHistory = useCallback(async (silent = false) => {
+    if (!silent) setLoading(true);
     setError(null);
 
     try {
@@ -39,17 +39,25 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf }
         ),
       }));
 
+      // Sort groups so the one with the most recent message is at the top
+      groupsArr.sort((a, b) => {
+        const dateA = a.items[0]?.createdAt ? new Date(a.items[0].createdAt) : 0;
+        const dateB = b.items[0]?.createdAt ? new Date(b.items[0].createdAt) : 0;
+        return dateB - dateA;
+      });
+
       setHistoryGroups(groupsArr);
     } catch (err) {
       setError("Failed to load history");
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    loadHistory();
-  }, [loadHistory]);
+    // If refreshTrigger > 0, it's a background update (silent)
+    loadHistory(refreshTrigger > 0);
+  }, [loadHistory, refreshTrigger]);
 
   // MUST BE AFTER HOOKS
   if (!user) {
