@@ -28,8 +28,8 @@ body {
 
 
 body {
-  font-family: sans-serif;
-  background: #010012;
+  /* font-family: monospace; */
+  /* background: #010012; */
 }
 
 .container {
@@ -45,24 +45,24 @@ body {
 }
 
 .custom-scroll::-webkit-scrollbar-track {
-  background: #111827; /* gray-900 */
+  background: #000000; /* gray-900 */
   border-radius: 10px;
 }
 
 .custom-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #4b5563, #374151); /* gray-600 → gray-700 */
+  background: linear-gradient(180deg, #020203, #0b0f14); /* gray-600 → gray-700 */
   border-radius: 10px;
-  border: 1px solid #1f2937; /* subtle border */
+  border: 1px solid #000000; /* subtle border */
 }
 
 .custom-scroll::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #6b7280, #4b5563);
+  background: linear-gradient(180deg, #000000, #000000);
 }
 
 /* Smooth scroll behavior */
 .custom-scroll {
   scrollbar-width: thin;
-  scrollbar-color: #4b5563 #1f2937;
+  scrollbar-color: #4b4b4b #181d23;
 }
 
 /* Fade top & bottom edges like ChatGPT */
@@ -74,4 +74,11 @@ body {
     black 90%,
     transparent
   );
+}
+
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
