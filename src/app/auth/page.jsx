@@ -36,7 +36,7 @@ export default function AuthPage() {
           password: form.password,
         });
         saveUser(res.data.user, res.data.token);
-        router.push("/chat");
+        window.location.href = "/chat";
       }
     } catch (error) {
       alert(error.response?.data?.message || "Authentication failed");
