@@ -1,11 +1,15 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
@@ -29,6 +33,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("token");
     document.cookie = "token=; path=/; max-age=0";
     setUser(null);
+    router.push("/");
   };
 
   return (
