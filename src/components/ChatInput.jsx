@@ -32,7 +32,7 @@ export default function ChatInput({ onSend }) {
       "
     >
       <textarea
-        placeholder="Type your message..."
+        placeholder="Ask here..."
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={handleKeyDown}
@@ -45,7 +45,7 @@ export default function ChatInput({ onSend }) {
           rounded-xl md:rounded-2xl 
           px-3 py-2 md:px-4 md:py-3 
           text-sm md:text-base 
-          focus:outline-none focus:ring-2 focus:ring-blue-500/50 
+          focus:outline-none focus:ring-2 focus:ring-white/30 
           transition shadow-lg shadow-black/15
         "
         style={{ maxHeight: "150px" }}
@@ -60,7 +60,7 @@ export default function ChatInput({ onSend }) {
           shadow-md backdrop-blur-xl
           ${
             message.trim()
-              ? "bg-blue-600/80 hover:bg-blue-700 text-white shadow-blue-800/40"
+              ? "bg-blue-100/40 text-white shadow-white/40"
               : "bg-gray-700/30 text-gray-400 cursor-not-allowed"
           }
         `}
