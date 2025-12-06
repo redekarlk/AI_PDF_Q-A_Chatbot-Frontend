@@ -61,7 +61,7 @@ export default function HomePage() {
     const { documentId, title } = res.data;
 
     setRefreshSidebar((prev) => prev + 1);
-    
+
     // Load chat history (handles both new and existing/duplicate PDFs)
     await loadChatForPdf({ docId: documentId, title: title || "New PDF" });
 
@@ -69,11 +69,12 @@ export default function HomePage() {
   };
 
 
- 
+
   // Send message to AI
   const handleSendMessage = async (userMessage) => {
     if (!selectedDocId) {
       alert("Select or upload a PDF first!");
+      setShowUploadCard(true);
       return;
     }
 
@@ -123,11 +124,19 @@ export default function HomePage() {
       selectedPdf={selectedPdf}
       refreshTrigger={refreshSidebar}
     >
+      {/* for mobile  */}
+      <div className="ml-15 mt-1 md:hidden">
+        <h1 className="text-xl font-bold mb-4 truncate">
+          {selectedPdf ? `${selectedPdf}` : "Select a PDF from Sidebar"}
+        </h1>
+      </div>
+
       <div className="flex flex-col h-full">
 
+        {/* for destop */}
         {/* Header */}
-        <h1 className="text-xl font-bold mb-4">
-          {selectedPdf ? `Chat for: ${selectedPdf}` : "Select a PDF from Sidebar"}
+        <h1 className="hidden md:block text-xl font-bold mb-4">
+          {selectedPdf ? `${selectedPdf}` : "Select a PDF from Sidebar"}
         </h1>
 
         {/* If new chat → show Upload Card */}
