@@ -51,12 +51,12 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-black via-neutral-900 to-black">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-black via-neutral-900 to-black relative overflow-hidden">
 
       {/* Outer Glow Effect */}
       <div className="absolute w-[450px] h-[450px] rounded-full bg-blue-600/20 blur-[140px] -z-10"></div>
 
-      <div className="w-full max-w-md bg-black/40 backdrop-blur-xl p-10 rounded-2xl border border-white/10 shadow-[0_0_40px_rgb(0,0,0,0.4)]">
+      <div className="w-full max-w-md p-10 rounded-2xl">
 
         {/* Heading */}
         <h1 className="text-4xl font-extrabold text-center text-white mb-2 drop-shadow-[0_0_15px_rgba(0,112,255,0.3)]">
