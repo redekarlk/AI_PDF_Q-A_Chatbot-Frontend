@@ -86,7 +86,7 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
   
           {/* DESKTOP SIDEBAR */}
       <div
-        className={`hidden sm:flex flex-col bg-gray-900 text-white h-full border-r border-gray-800 shadow-xl 
+        className={`hidden sm:flex flex-col bg-gray-500/10 text-white h-full border-r border-gray-800 shadow-xl 
         transition-all duration-300 ${open ? "w-64" : "w-16"}`}
       >
         <div className="p-4 border-b border-gray-700 flex items-center justify-between">
@@ -115,7 +115,7 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
 
             <button
               onClick={() => onSelectHistory({ newChat: true })}
-              className="bg-blue-950 ring-1 ring-violet-200 text-white px-3 py-2 rounded-sm text-sm hover:bg-gray-700 transition"
+              className="ring-1 ring-violet-200 text-white px-3 py-2 rounded-sm text-sm hover:bg-gray-700 transition"
             >
               + New Chat
             </button>
@@ -139,9 +139,9 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
                         title: group.title,
                       })
                     }
-                    className={`cursor-pointer mb-1 text-sm font-semibold truncate
-                    hover:text-blue-300 transition
-                    ${isSelectedPdf(group.title) ? "text-yellow-300" : "text-blue-400"}
+                    className={`cursor-pointer p-1 mb-1 text-sm font-semibold truncate
+                    hover:bg-gray-600/30 hover:rounded-lg transition
+                    ${isSelectedPdf(group.title) ? "bg-gray-600/20 rounded-lg" : "text-white"}
                     ${open ? "opacity-100" : "opacity-0"}`}
                     title={group.title}
                   >
@@ -177,7 +177,7 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
           {/* MOBILE SIDEBAR */}
       <div
         className={`sm:hidden fixed top-0 left-0 z-40 h-full w-64 
-        bg-gray-900 text-white shadow-xl border-r border-gray-800
+        bg-black text-white shadow-xl border-r border-gray-800
         transition-transform duration-300
         ${mobileOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
@@ -202,7 +202,7 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
                 onSelectHistory({ newChat: true });
                 setMobileOpen(false);
               }}
-              className="bg-blue-950 ring-1 ring-violet-200 text-white px-4 py-2 rounded-lg text-sm"
+              className="ring-1 ring-violet-200 text-white px-4 py-2 rounded-lg text-sm"
             >
               + New Chat
             </button>
@@ -220,8 +220,8 @@ export default function SidebarLayout({ children, onSelectHistory, selectedPdf, 
                     });
                     setMobileOpen(false);
                   }}
-                  className={`cursor-pointer mb-1 text-sm font-semibold truncate
-                  ${isSelectedPdf(group.title) ? "text-yellow-300" : "text-blue-400"}`}
+                  className={`cursor-pointer p-1 mb-1 text-sm font-semibold truncate 
+                  ${isSelectedPdf(group.title) ? "bg-gray-600/20 rounded-lg" : "text-white"}`}
                   title={group.title}
                 >
                   {group.title}
