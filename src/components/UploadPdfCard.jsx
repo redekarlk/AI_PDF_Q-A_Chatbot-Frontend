@@ -43,8 +43,17 @@ const UploadCard = ({ onUpload }) => {
 
     if (!droppedFile) return;
 
-    if (droppedFile.type !== "application/pdf") {
-      setMessage("Please upload a valid PDF file.");
+    const validTypes = [
+      "application/pdf",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "text/plain",
+      "image/png",
+      "image/jpeg",
+      "image/jpg"
+    ];
+
+    if (!validTypes.includes(droppedFile.type)) {
+      setMessage("Please upload a valid PDF, Word, Text, or Image file.");
       return;
     }
 
@@ -68,10 +77,10 @@ const UploadCard = ({ onUpload }) => {
   };
 
   return (
-    <div className="bg-gray-900/80 backdrop-blur-xl border border-gray-800 p-6 md:p-10 rounded-2xl shadow-xl w-full max-w-xl mx-auto mt-6 mb-6 transition-all duration-300">
+    <div className="bg-gray-900/20 backdrop-blur-xl border border-gray-800 p-6 md:p-10 rounded-2xl shadow-xl w-full max-w-xl mx-auto mt-6 mb-6 transition-all duration-300">
 
-      <h1 className="text-2xl md:text-3xl font-semibold mb-6 text-center text-gray-100">
-        Upload PDF
+            <h1 className="text-2xl md:text-3xl font-bold text-white mb-6 text-center">
+        Upload Document
       </h1>
 
       {/* Upload Box */}
@@ -97,7 +106,7 @@ const UploadCard = ({ onUpload }) => {
           {/* Text */}
           {!uploading ? (
             <p className="text-gray-300 text-base md:text-lg">
-              Drag & Drop your PDF<br />
+              Drag & Drop PDF, Word, Text, or Image<br />
               <span className="text-gray-500 text-sm">or click to browse</span>
             </p>
           ) : (
@@ -120,16 +129,27 @@ const UploadCard = ({ onUpload }) => {
         <input
           ref={inputRef}
           type="file"
-          accept="application/pdf"
           disabled={uploading}
+          accept=".pdf,.docx,.txt,.png,.jpg,.jpeg"
           onChange={(e) => {
             const selected = e.target.files[0];
 
             if (!selected) return;
-            if (selected.type !== "application/pdf") {
-              setMessage("Please upload a PDF file.");
+            
+            const validTypes = [
+              "application/pdf",
+              "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+              "text/plain",
+              "image/png",
+              "image/jpeg",
+              "image/jpg"
+            ];
+
+            if (!validTypes.includes(selected.type)) {
+              setMessage("Please upload a valid PDF, Word, Text, or Image file.");
               return;
             }
+            
             if (selected.size / 1024 / 1024 > MAX_SIZE_MB) {
               setMessage(`File size exceeds ${MAX_SIZE_MB}MB.`);
               return;
@@ -148,8 +168,8 @@ const UploadCard = ({ onUpload }) => {
         disabled={!file || uploading}
         className={`w-full mt-6 py-3 rounded-xl text-white font-semibold text-lg transition-all shadow-lg
           ${!file || uploading
-            ? "bg-gray-700 cursor-not-allowed"
-            : "bg-blue-600 hover:bg-blue-700"}
+            ? "bg-gray-700/10 cursor-not-allowed"
+            : "bg-gray-700 hover:bg-gray-800"}
         `}
       >
         {uploading ? (
@@ -158,7 +178,7 @@ const UploadCard = ({ onUpload }) => {
             Uploading…
           </div>
         ) : (
-          "Upload PDF"
+          "Upload Document"
         )}
       </button>
 
