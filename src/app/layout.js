@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "RAG App",
+  title: "DocDrip AI",
   description: "AI PDF Q&A",
 };
 
@@ -24,20 +24,6 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-
-          {/*  Global Navigation Bar */}
-          {/* <nav
-            style={{
-              padding: 10,
-              background: "#000000",
-              display: "flex",
-              gap: 20,
-            }}
-          >
-            <a href="/upload">Upload PDF</a>
-            <a href="/ask">Ask Questions</a>
-            <a href="/history">History</a>
-          </nav> */}
 
           {/* Render the page */}
           {children}
