@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   // baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000",
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://ai-pdf-q-a-chatbot-backend.onrender.com",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://ai-pdf-q-a-chatbot-backend-o723.onrender.com",
 });
 
 // attach token automatically
