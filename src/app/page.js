@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
 
 const features = [
@@ -91,8 +92,8 @@ const ChatBubble = ({ sender, text, citation }) => {
     <div className={`flex ${isUser ? "justify-end" : "justify-start"} mb-3`}>
       <div
         className={`max-w-[80%] p-3 rounded-xl shadow-lg text-sm backdrop-blur-sm ${isUser
-            ? "bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-purple-900/40"
-            : "bg-gradient-to-br from-gray-700 to-gray-800 text-gray-100 shadow-black/40"
+          ? "bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-purple-900/40"
+          : "bg-gradient-to-br from-gray-700 to-gray-800 text-gray-100 shadow-black/40"
           }`}
       >
         {/* FIX: wrapper div with className */}
@@ -111,6 +112,10 @@ const ChatBubble = ({ sender, text, citation }) => {
     </div>
   );
 };
+
+
+
+
 
 
 export default function Home() {
@@ -165,29 +170,55 @@ export default function Home() {
         <div className="absolute top-12 right-6 w-56 h-56 rounded-full blur-3xl animate-blob" aria-hidden />
         <div className="absolute bottom-6 left-6 w-56 h-56 rounded-full blur-3xl animate-blob animation-delay-2000" aria-hidden />
 
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight mx-auto bg-gradient-to-r from-purple-300 via-indigo-300 to-teal-200 text-transparent bg-clip-text drop-shadow-xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto"
+        >
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight mx-auto bg-gradient-to-r from-purple-300 via-indigo-300 to-teal-200 text-transparent bg-clip-text drop-shadow-xl"
+          >
             Ask Anything Inside Your Documents
-          </h1>
+          </motion.h1>
 
           <TypewriterTagline />
 
-          <p className="mt-6 text-base sm:text-xl text-gray-300 max-w-2xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="mt-6 text-base sm:text-xl text-gray-300 max-w-2xl mx-auto"
+          >
             Query any PDF with natural language. Extract insights instantly using{" "}
             <span className="text-indigo-300 font-semibold">Gemini-powered RAG</span>.
-          </p>
+          </motion.p>
 
-          <div className="mt-8 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="mt-8 flex justify-center"
+          >
             <Link href="/auth" className="inline-block px-8 py-3 rounded-sm text-lg font-bold ring ring-red-500 hover:ring-0 hover:bg-gradient-to-r from-purple-600 to-indigo-600 shadow-xl shadow-purple-900/40 hover:scale-105 transition" aria-label="Upload PDF and start chatting">
               Upload PDF → Start Chatting
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* DEMO PANEL */}
       <section className="py-12 px-4 sm:px-6 max-w-6xl mx-auto">
-        <div className="rounded-sm border border-gray-700/50 bg-gray-900/10 backdrop-blur-xl p-6 sm:p-8 shadow-2xl shadow-black/60">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="rounded-sm border border-gray-700/50 bg-gray-900/10 backdrop-blur-xl p-6 sm:p-8 shadow-2xl shadow-black/60"
+        >
           <h3 className="text-2xl sm:text-3xl font-bold text-center text-indigo-300 mb-8">Live Demo Preview</h3>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -222,23 +253,39 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
+
+
 
       {/* FEATURES */}
       <section className="py-16 px-4 sm:px-6 ">
-        <h2 className="text-3xl sm:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-indigo-300">The Intelligence Stack</h2>
-        <p className="text-gray-400 text-center mt-4 mb-8 max-w-xl mx-auto">The fully optimized AI-RAG pipeline powering your document understanding.</p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-3xl sm:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-indigo-300">The Intelligence Stack</h2>
+          <p className="text-gray-400 text-center mt-4 mb-8 max-w-xl mx-auto">The fully optimized AI-RAG pipeline powering your document understanding.</p>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {features.map((f, i) => (
-            <div key={i} className={`p-6 sm:p-8 rounded-sm bg-gradient-to-br ${f.bg} border shadow-xl shadow-black/40 backdrop-blur-sm animate-card-hover transition`}>
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.2, duration: 0.5 }}
+              className={`p-6 sm:p-8 rounded-sm bg-gradient-to-br ${f.bg} border shadow-xl shadow-black/40 backdrop-blur-sm animate-card-hover transition`}
+            >
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-gray-900 ring ring-teal-400 mx-auto mb-4 shadow-md">
                 {f.icon}
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-center mb-2">{f.title}</h3>
               <p className="text-gray-300 text-center text-sm sm:text-base">{f.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
