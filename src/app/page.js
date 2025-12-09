@@ -45,6 +45,219 @@ const features = [
   },
 ];
 
+
+
+// How it works
+const howItWorks = [
+  {
+    id: 1,
+    title: "Upload Document",
+    description: "Drag and drop your PDF. We securely process and encrypt your data instantly.",
+    color: "bg-black/10",
+    icon: (
+      <svg className="w-8 h-8 text-purple-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M16 12l-4-4m0 0l-4 4m4-4v12" />
+      </svg>
+    ),
+  },
+  {
+    id: 2,
+    title: "AI Analysis",
+    description: "Our engine chunks text and creates vector embeddings for semantic search.",
+    color: "bg-black/10",
+    icon: (
+      <svg className="w-8 h-8 text-indigo-200" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15M19 9l-5 5m0 0L9 9m5 5v6" />
+      </svg>
+    )
+  },
+  {
+    id: 3,
+    title: "Context Retrieval",
+    description: "When you ask a question, we find the most relevant paragraphs.",
+    color: "bg-black/10",
+    icon: (
+      <svg className="w-8 h-8 text-blue-200" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M10 17a7 7 0 100-14 7 7 0 000 14z" />
+      </svg>
+    )
+  },
+  {
+    id: 4,
+    title: "Instant Answer",
+    description: "Gemini generates a precise response with citations to the source.",
+    color: "bg-black/10",
+    icon: (
+      <svg className="w-8 h-8 text-teal-200" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h8m-8 4h5m-9 6l1.5-3H4a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2h-5l1.5 3" />
+      </svg>
+    )
+  },
+
+  // NEW STEPS
+
+  {
+    id: 5,
+    title: "Smart Follow-Up",
+    description: "Ask deeper follow-up questions. The AI keeps conversation memory for accuracy.",
+    color: "bg-black/10",
+    icon: (
+      <svg className="w-8 h-8 text-emerald-200" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v6h6M20 20v-6h-6M4 20v-6h6M20 4v6h-6" />
+      </svg>
+    )
+  },
+  {
+    id: 6,
+    title: "Multi-Document Support",
+    description: "Upload multiple PDFs and let the system analyze them together.",
+    color: "bg-black/10",
+    icon: (
+      <svg className="w-8 h-8 text-green-200" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h8m-8 4h8m-8 4h5M4 6V4a2 2 0 012-2h10l4 4v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z" />
+      </svg>
+    )
+  },
+  {
+    id: 7,
+    title: "Citation Mapping",
+    description: "Every answer links to exact page numbers and highlighted source text.",
+    color: "bg-black/10",
+    icon: (
+      <svg className="w-8 h-8 text-lime-200" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2l7 7-7 7-7-7 7-7zm0 14v6" />
+      </svg>
+    )
+  },
+  // {
+  //   id: 8,
+  //   title: "Export Insights",
+  //   description: "Download summaries, key points, and extracted insights as files.",
+  //   color: "bg-black/10",
+  //   icon: (
+  //     <svg className="w-8 h-8 text-yellow-200" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+  //       <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v12m0 0l4-4m-4 4l-4-4M4 21h16" />
+  //     </svg>
+  //   )
+  // },
+  {
+    id: 9,
+    title: "Secure Storage",
+    description: "Your files stay encrypted with auto-expiry & full deletion control.",
+    color: "bg-black/10",
+    icon: (
+      <svg className="w-8 h-8 text-amber-200" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 11c1.1 0 2 .9 2 2v3H10v-3c0-1.1.9-2 2-2zm0-6a4 4 0 00-4 4v2h8V9a4 4 0 00-4-4z" />
+      </svg>
+    )
+  },
+  // {
+  //   id: 10,
+  //   title: "Team Collaboration",
+  //   description: "Share chats and documents with teammates for research and review.",
+  //   color: "bg-black/10",
+  //   icon: (
+  //     <svg className="w-8 h-8 text-orange-200" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+  //       <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a4 4 0 00-5-4M7 20H2v-2a4 4 0 015-4m5-10a4 4 0 110 8 4 4 0 010-8z" />
+  //     </svg>
+  //   )
+  // }
+];
+
+
+
+
+const HorizontalScrollCarousel = () => {
+  const targetRef = React.useRef(null);
+  const scrollRef = React.useRef(null);
+  const [xRange, setXRange] = React.useState(["0px", "0px"]);
+
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
+
+  React.useEffect(() => {
+    if (scrollRef.current) {
+      const updateWidth = () => {
+        const scrollWidth = scrollRef.current.scrollWidth;
+        const clientWidth = window.innerWidth;
+        const distance = scrollWidth - clientWidth;
+        setXRange(["0px", `-${distance + 50}px`]);
+      };
+
+      updateWidth();
+      window.addEventListener("resize", updateWidth);
+      return () => window.removeEventListener("resize", updateWidth);
+    }
+  }, []);
+
+  const x = useTransform(scrollYProgress, [0, 1], xRange);
+
+  return (
+    <section ref={targetRef} className="relative h-[500vh]">
+      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+        
+        {/* Top Heading */}
+        <div className="w-full flex justify-center mb-16 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl sm:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-indigo-300">
+              How It Works
+            </h2>
+            <p className="text-gray-400 text-center mt-4 max-w-xl mx-auto">
+              A smooth visual walkthrough of the AI-DOC intelligence pipeline.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Scroll Section */}
+        <motion.div
+          ref={scrollRef}
+          style={{ x }}
+          className="flex gap-10 pl-[40vw] md:pl-[30vw] pr-[10vw]"
+        >
+          {howItWorks.map((card, i) => (
+            <motion.div
+              key={card.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 0.6 }}
+              className={`relative flex-shrink-0 w-[300px] md:w-[380px] bg-gradient-to-br ${card.color} rounded-sm shadow-xl shadow-black/40 p-8 border border-violet-500/30 bg-violet-950/10 backdrop-blur-sm`}
+            >
+              <div className="relative z-10 flex flex-col items-center text-center">
+
+                {/* Icon */}
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-gray-900 ring ring-teal-400 mb-10 mt-2 shadow-md">
+                  {card.icon}
+                </div>
+
+                {/* Title */}
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">
+                  {card.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-gray-300 text-sm sm:text-base">
+                  {card.description}
+                </p>
+              </div>
+
+              {/* overlay */}
+              <div className="absolute inset-0 bg-black/20 rounded-lg" />
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+    </section>
+  );
+};
+
 const phrases = [
   "Summarize this financial report...",
   "What are the key clauses in this contract?",
@@ -91,10 +304,7 @@ const ChatBubble = ({ sender, text, citation }) => {
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"} mb-3`}>
       <div
-        className={`max-w-[80%] p-3 rounded-xl shadow-lg text-sm backdrop-blur-sm ${isUser
-          ? "bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-purple-900/40"
-          : "bg-gradient-to-br from-gray-700 to-gray-800 text-gray-100 shadow-black/40"
-          }`}
+        className={`max-w-[80%] p-3 rounded-xl shadow-lg text-sm backdrop-blur-sm ${isUser ? "bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-purple-900/40" : "bg-gradient-to-br from-gray-700 to-gray-800 text-gray-100 shadow-black/40"}`}
       >
         {/* FIX: wrapper div with className */}
         <div className="prose prose-invert m-0 break-words">
@@ -255,6 +465,11 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
+
+
+
+      {/* SCROLL SECTION */}
+      <HorizontalScrollCarousel />
 
 
 
