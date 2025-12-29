@@ -66,15 +66,7 @@ export default function ChatMessages({ chatHistory }) {
               <div className="flex flex-col flex-1 min-w-0">
                 <div className="px-5 py-4 rounded-2xl shadow-sm border border-zinc-700/5">
 
-                  <div className="
-          prose prose-invert max-w-none 
-          text-gray-100 leading-relaxed break-words
-          prose-p:my-3 
-          prose-headings:my-4 prose-headings:font-semibold
-          prose-ul:my-3 prose-li:my-1
-          prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-700 prose-pre:rounded-lg
-          prose-code:bg-zinc-900 prose-code:text-green-400 prose-code:px-1 prose-code:rounded
-        ">
+                  <div className="prose prose-invert max-w-none text-gray-100 leading-relaxed break-words prose-p:my-3 prose-headings:my-4 prose-headings:font-semibold prose-ul:my-3 prose-li:my-1 prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-700 prose-pre:rounded-lg prose-code:bg-zinc-900 prose-code:text-green-400 prose-code:px-1 prose-code:rounded">
                     <ReactMarkdown
                       rehypePlugins={[rehypeRaw]}
                       remarkPlugins={[remarkGfm]}

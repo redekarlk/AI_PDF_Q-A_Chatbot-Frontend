@@ -52,14 +52,7 @@ import rehypeRaw from "rehype-raw";
 
 export default function ChatMarkdown({ content }) {
   return (
-    <div
-      className="
-        text-gray-100 leading-[1.65] tracking-wide
-        space-y-5
-        [&>:first-child]:mt-0
-        max-w-full
-      "
-    >
+    <div className="text-gray-100 leading-[1.65] tracking-wide space-y-5 [&>:first-child]:mt-0 max-w-full">
       <ReactMarkdown
         rehypePlugins={[rehypeRaw]}
         remarkPlugins={[remarkGfm]}
